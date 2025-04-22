@@ -1,23 +1,24 @@
 import { create } from "zustand";
+import { CardFormData } from "../../views/billing/card-form";
 
 interface OnboardingStore {
   currentStep: string;
   plan: string;
-  billing: unknown;
+  billing?: CardFormData;
   invites: string[];
   setSelectedPlan: (plan: string) => void;
   setCurrentStep: (step: string) => void;
-  setBilling: (billing: unknown) => void;
+  setBilling: (billing: CardFormData) => void;
   setInvites: (invites: string[]) => void;
 }
 
 export const useOnboardingStore = create<OnboardingStore>((set) => ({
   currentStep: "pricing",
   plan: "",
-  billing: {},
+  billing: undefined,
   invites: [],
-  setSelectedPlan: (plan: string) => set({ plan }),
-  setCurrentStep: (step: string) => set({ currentStep: step }),
-  setBilling: (billing: unknown) => set({ billing }),
-  setInvites: (invites: string[]) => set({ invites }),
+  setSelectedPlan: (plan) => set({ plan }),
+  setCurrentStep: (step) => set({ currentStep: step }),
+  setBilling: (billing) => set({ billing }),
+  setInvites: (invites) => set({ invites }),
 }));
