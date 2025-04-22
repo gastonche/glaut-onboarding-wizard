@@ -1,3 +1,5 @@
+import { Onboarding } from "./core/components/organisms/onboarding";
+
 export default function App() {
-  return <h1 className="text-red-200">Title</h1>;
+  return <Onboarding />;
 }

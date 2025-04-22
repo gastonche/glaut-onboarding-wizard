@@ -12,7 +12,7 @@ interface OnboardingStore {
 }
 
 export const useOnboardingStore = create<OnboardingStore>((set) => ({
-  currentStep: "",
+  currentStep: "pricing",
   plan: "",
   billing: {},
   invites: [],
