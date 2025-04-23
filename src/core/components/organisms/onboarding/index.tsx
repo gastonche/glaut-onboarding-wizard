@@ -1,4 +1,4 @@
-import { OnboardingCompleted } from "../../../../views/pricing/completed";
+import { OnboardingCompleted } from "../../../../views/completed";
 import { useOnboarding } from "../../../hooks/use-onboarding";
 import { OnboardingLayout } from "./onboarding-layout";
 

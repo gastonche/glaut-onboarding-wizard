@@ -14,7 +14,7 @@ export const Billing: FC<BillingProps> = ({ ticker, onNext, onPrev }) => {
   const { setBilling, billing } = useOnboardingStore();
   const { mutate, loading: submitting } = useSampleMutation();
   return (
-    <>
+    <div className="max-w-[700px]">
       <OnboardingStepHeader
         title="Set Up Billing"
         subtitle="Enter your credit card details securely to enable billing, recurring payments, and proper invoicing through our trusted gateway."
@@ -30,6 +30,6 @@ export const Billing: FC<BillingProps> = ({ ticker, onNext, onPrev }) => {
         onGoBack={onPrev}
         defaultValues={billing}
       />
-    </>
+    </div>
   );
 };

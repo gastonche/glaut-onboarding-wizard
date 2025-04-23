@@ -37,14 +37,15 @@ export const CardForm: FC<CardFormProps> = ({
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="max-w-[700px] py-6 space-y-6"
+      className="py-6 space-y-6"
     >
       <div>
-        <Text variant="bodySm" as="label">
+        <Text variant="bodySm" as="label" htmlFor="cardHolderName">
           Card Holder Name
         </Text>
         <input
           {...register("cardHolderName")}
+          id="cardHolderName"
           className={clsx(
             "mt-1 block w-full rounded-md border focus:ring p-2 border-slate-200",
             errors.cardHolderName ? "border-red-500" : "border-gray-300"
@@ -59,11 +60,12 @@ export const CardForm: FC<CardFormProps> = ({
       </div>
 
       <div>
-        <Text variant="bodySm" as="label">
+        <Text variant="bodySm" as="label" htmlFor="cardNumber">
           Credit Card Number
         </Text>
         <input
           {...register("cardNumber")}
+          id="cardNumber"
           maxLength={16}
           className={clsx(
             "mt-1 block w-full rounded-md border focus:ring p-2 border-slate-200",
@@ -120,11 +122,12 @@ export const CardForm: FC<CardFormProps> = ({
         </div>
 
         <div>
-          <Text variant="bodySm" as="label">
+          <Text variant="bodySm" as="label" htmlFor="cvc">
             CVC
           </Text>
           <input
             {...register("cvc")}
+            id="cvc"
             maxLength={3}
             className={clsx(
               "mt-1 block w-full rounded-md border focus:ring p-2 border-slate-200",

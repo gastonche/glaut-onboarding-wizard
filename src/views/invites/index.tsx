@@ -38,16 +38,22 @@ export const Invites: FC<BillingProps> = ({ ticker, onNext, onPrev }) => {
         className="py-6 flex items-end gap-1"
       >
         <div className="w-full">
-          <Text variant="bodySm" as="label">
+          <Text variant="bodySm" as="label" htmlFor="email">
             Invite team mates by email
           </Text>
           <input
             {...register("email")}
+            id="email"
             className="mt-1 block w-full rounded-md border focus:ring p-2 border-slate-200"
             placeholder="teammate@example.com"
           />
         </div>
-        <Button variant="primary-text" type="submit" icon={<Plus />} className="whitespace-nowrap">
+        <Button
+          variant="primary-text"
+          type="submit"
+          icon={<Plus />}
+          className="whitespace-nowrap"
+        >
           Add another
         </Button>
       </form>
@@ -58,6 +64,7 @@ export const Invites: FC<BillingProps> = ({ ticker, onNext, onPrev }) => {
             <Button
               icon={<Trash2 className="text-slate-400" size={16} />}
               variant="neutral-text"
+              aria-label="Remove invite"
               onClick={() => {
                 setInvites([
                   ...invites.slice(0, index),

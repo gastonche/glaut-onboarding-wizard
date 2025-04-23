@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { Button } from "../../../core/components/atoms/button";
-import { Text } from "../../../core/components/atoms/text";
+import { Button } from "../../core/components/atoms/button";
+import { Text } from "../../core/components/atoms/text";
 import {
   clearSession,
   useOnboardingStore,
-} from "../../../core/lib/onboarding-store";
+} from "../../core/lib/onboarding-store";
 
 export const OnboardingCompleted = () => {
   const { plan, billing, invites } = useOnboardingStore();

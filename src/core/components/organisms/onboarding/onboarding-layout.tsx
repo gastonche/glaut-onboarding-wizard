@@ -44,7 +44,10 @@ export const OnboardingLayout = ({ steps, children }: OnboardingLayout) => {
                     />
                   </div>
                 ) : step.current ? (
-                  <div className="min-w-6 aspect-square bg-pink-500 rounded-full relative">
+                  <div
+                    className="min-w-6 aspect-square bg-pink-500 rounded-full relative"
+                    data-testid="current-step-indicator"
+                  >
                     <div className="absolute top-[50%] left-[50%] -translate-[50%] w-3 h-3 rounded-full bg-white"></div>
                   </div>
                 ) : (
