@@ -1,4 +1,4 @@
-// pricing.test.tsx
+import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Pricing } from "../";
@@ -37,7 +37,7 @@ describe("Pricing", () => {
   });
 
   it("renders the OnboardingStepHeader and all pricing plans", () => {
-    render(<Pricing ticker="Step 2" onNext={mockOnNext} />);
+    render(<Pricing ticker="Step 2" onNext={mockOnNext} onPrev={() => {}} />);
 
     // Verify the header
     expect(screen.getByText("Choose a Plan")).toBeInTheDocument();
@@ -55,7 +55,7 @@ describe("Pricing", () => {
   });
 
   it("calls setSelectedPlan and onNext when a plan is selected", async () => {
-    render(<Pricing ticker="Step 2" onNext={mockOnNext} />);
+    render(<Pricing ticker="Step 2" onNext={mockOnNext} onPrev={() => {}} />);
 
     // Click the "Continue with Business" button
     const businessPlanButton = screen.getByText("Continue with Business");
@@ -69,7 +69,7 @@ describe("Pricing", () => {
   });
 
   it("applies correct styles for the best offer plan (Business)", () => {
-    render(<Pricing ticker="Step 2" onNext={mockOnNext} />);
+    render(<Pricing ticker="Step 2" onNext={mockOnNext} onPrev={() => {}} />);
 
     // Verify the Business plan has the best offer styling
     const businessPlanContainer = screen.getByText("Business").closest("div");
@@ -77,7 +77,7 @@ describe("Pricing", () => {
   });
 
   it("renders a string price correctly for the Enterprise plan", () => {
-    render(<Pricing ticker="Step 2" onNext={mockOnNext} />);
+    render(<Pricing ticker="Step 2" onNext={mockOnNext} onPrev={() => {}} />);
 
     // Find the Enterprise plan container
     const enterprisePlan = screen.getByText("Enterprise").closest("div");
@@ -93,7 +93,7 @@ describe("Pricing", () => {
   });
 
   it("renders all features for each plan", () => {
-    render(<Pricing ticker="Step 2" onNext={mockOnNext} />);
+    render(<Pricing ticker="Step 2" onNext={mockOnNext} onPrev={() => {}} />);
 
     // Verify features for the Basic plan
     const basicPlan = screen.getByText("Basic").closest("div");
