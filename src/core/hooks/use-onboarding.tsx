@@ -31,7 +31,7 @@ const STEPS: Step[] = [
     icon: <CreditCard className="min-w-6" />,
   },
   {
-    id: "invitees",
+    id: "invites",
     title: "Invite Teammates",
     description:
       "Add your team members by entering their email addresses so they can collaborate with you inside the platform right after onboarding.",
@@ -52,6 +52,8 @@ export const useOnboarding = () => {
 
     if (nextStepIndex < STEPS.length) {
       onboarding.setCurrentStep(STEPS[nextStepIndex].id);
+    } else {
+      onboarding.setCompleted(true);
     }
   };
 
@@ -66,7 +68,9 @@ export const useOnboarding = () => {
   const steps = STEPS.map((step) => ({
     ...step,
     current: step.id === onboarding.currentStep,
-    done: getStepIndex(step.id) < getStepIndex(onboarding.currentStep),
+    done:
+      onboarding.completed ||
+      getStepIndex(step.id) < getStepIndex(onboarding.currentStep),
   }));
 
   return {

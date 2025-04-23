@@ -31,6 +31,7 @@ export const OnboardingLayout = ({ steps, children }: OnboardingLayout) => {
             </Text>
             {steps.map((step, index) => (
               <div
+                key={step.id}
                 className={clsx("mb-12 flex items-start gap-4 relative", {
                   "opacity-50": !step.current && !step.done,
                 })}
