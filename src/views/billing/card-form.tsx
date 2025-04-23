@@ -14,12 +14,14 @@ interface CardFormProps {
   onSubmit: (data: CardFormData) => void;
   submitting: boolean;
   onGoBack: () => void;
+  defaultValues?: CardFormData;
 }
 
 export const CardForm: FC<CardFormProps> = ({
   onSubmit,
   submitting,
   onGoBack,
+  defaultValues,
 }) => {
   const {
     register,
@@ -28,6 +30,7 @@ export const CardForm: FC<CardFormProps> = ({
   } = useForm<CardFormData>({
     resolver: zodResolver(cardSchema),
     mode: "onChange",
+    defaultValues,
   });
 
   return (
@@ -139,6 +142,7 @@ export const CardForm: FC<CardFormProps> = ({
           icon={<ArrowLeft className="w-4 h-4" />}
           onClick={onGoBack}
           variant="neutral-text"
+          type="button"
         >
           Back
         </Button>

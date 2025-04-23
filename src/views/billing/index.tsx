@@ -11,7 +11,7 @@ export interface BillingProps {
 }
 
 export const Billing: FC<BillingProps> = ({ ticker, onNext, onPrev }) => {
-  const { setBilling } = useOnboardingStore();
+  const { setBilling, billing } = useOnboardingStore();
   const { mutate, loading: submitting } = useSampleMutation();
   return (
     <>
@@ -28,6 +28,7 @@ export const Billing: FC<BillingProps> = ({ ticker, onNext, onPrev }) => {
         }}
         submitting={submitting}
         onGoBack={onPrev}
+        defaultValues={billing}
       />
     </>
   );

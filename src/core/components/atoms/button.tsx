@@ -5,10 +5,10 @@ import { FC, PropsWithChildren, ReactNode } from "react";
 const variants = {
   primary: "bg-pink-500 text-white disabled:bg-pink-300",
   neutral: "bg-slate-500 text-white disabled:bg-slate-300",
-  "neutral-text": "text-slate-900 bg-transparent disabled:text-slate-500",
+  "neutral-text": "text-slate-900 bg-transparent disabled:text-slate-500 hover:bg-slate-100",
   "neutral-outline": "border-slate-500 text-slate-900 bg-transparent disabled:border-slate-300",
   "primary-outline": "border-pink-500 text-white bg-transparent disabled:border-pink-300",
-  "primary-text": "text-pink-500 bg-transparent disabled:text-pink-300",
+  "primary-text": "text-pink-500 bg-transparent disabled:text-pink-300 hover:bg-pink-100",
 };
 
 const sizes = {
