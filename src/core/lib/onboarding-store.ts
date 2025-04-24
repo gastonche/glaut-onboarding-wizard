@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { CardFormData } from "../../views/billing/card-form";
+import { CardFormData } from "../../views/billing";
 
 interface OnboardingStore {
   currentStep: string;
@@ -33,10 +33,11 @@ const persistSession = ({
   plan,
   billing,
   invites,
-}: Pick<OnboardingStore, "plan" | "billing" | "invites">) => {
+  completed,
+}: Pick<OnboardingStore, "plan" | "billing" | "invites" | "completed">) => {
   localStorage.setItem(
     `onboarding-${getOrCreateSessionId()}`,
-    JSON.stringify({ plan, billing, invites })
+    JSON.stringify({ plan, billing, invites, completed })
   );
 };
 
@@ -61,7 +62,7 @@ const getSessionData = () => {
   return {
     ...data,
     currentStep,
-    completed: data.plan && data.billing && data.invites.length > 0,
+    completed: data.completed
   };
 };
 

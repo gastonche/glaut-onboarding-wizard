@@ -1,5 +1,5 @@
 import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
-import { CardFormData } from "../../../views/billing/card-form";
+import { CardFormData } from "../../../views/billing";
 
 const SESSION_KEY = "onboarding";
 
@@ -64,9 +64,6 @@ describe("useOnboardingStore (initialization & persistence)", () => {
 
     // currentStep logic: plan+billing exist, invites length = 1 → "invites"
     expect(store.currentStep).toBe("invites");
-
-    // completed logic: invites.length > 0 → true
-    expect(store.completed).toBe(true);
   });
 
   it("setters update in-memory state and re-persist the session payload", async () => {
@@ -106,7 +103,7 @@ describe("useOnboardingStore (initialization & persistence)", () => {
     store.setCurrentStep("billing");
     expect(useOnboardingStore.getState().currentStep).toBe("billing");
     raw = JSON.parse(localStorage.getItem("onboarding-3000")!);
-    expect(Object.keys(raw)).toEqual(["plan", "billing", "invites"]);
+    expect(Object.keys(raw)).toEqual(["plan", "billing", "invites", "completed"]);
 
     // setCompleted (does not change persisted payload)
     store.setCompleted(true);
@@ -116,6 +113,7 @@ describe("useOnboardingStore (initialization & persistence)", () => {
       plan: "pro",
       billing: billingData,
       invites,
+      completed: true,
     });
   });
 });

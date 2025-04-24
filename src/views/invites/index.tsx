@@ -31,6 +31,33 @@ export const Invites: FC<BillingProps> = ({ ticker, onNext, onPrev }) => {
         title="Invite Teammates"
         subtitle="Add your team members by entering their email addresses so they can collaborate with you inside the platform right after onboarding."
         ticker={ticker}
+        controls={(ticker) => (
+          <div className="flex items-center justify-between gap-4 mt-4">
+            <Button
+              icon={<ArrowLeft className="w-4 h-4" />}
+              onClick={onPrev}
+              variant="neutral-text"
+            >
+              Back
+            </Button>
+            {ticker}
+            <Button
+              variant="primary"
+              size="sm"
+              className="w-[200px]"
+              type="submit"
+              disabled={!invites.length}
+              loading={loading}
+              iconEnd={<ArrowRight className="w-4 h-4" />}
+              onClick={async () => {
+                await mutate();
+                onNext();
+              }}
+            >
+              Finish
+            </Button>
+          </div>
+        )}
       />
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -80,30 +107,6 @@ export const Invites: FC<BillingProps> = ({ ticker, onNext, onPrev }) => {
           )}
         </Fragment>
       ))}
-      <div className="flex items-center justify-between gap-4 mt-4">
-        <Button
-          icon={<ArrowLeft className="w-4 h-4" />}
-          onClick={onPrev}
-          variant="neutral-text"
-        >
-          Back
-        </Button>
-        <Button
-          variant="primary"
-          size="sm"
-          className="w-[200px]"
-          type="submit"
-          disabled={!invites.length}
-          loading={loading}
-          iconEnd={<ArrowRight className="w-4 h-4" />}
-          onClick={async () => {
-            await mutate();
-            onNext();
-          }}
-        >
-          Finish
-        </Button>
-      </div>
     </div>
   );
 };
