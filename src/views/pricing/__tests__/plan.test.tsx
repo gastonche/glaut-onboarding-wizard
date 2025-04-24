@@ -1,5 +1,5 @@
-// pricing-plan.test.tsx
-import { describe, it, expect, vi } from "vitest";
+import React from "react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Plan, PricingPlan } from "../plan";
 import { useSampleMutation } from "../../../core/hooks/use-sample-mutation";
@@ -19,7 +19,7 @@ describe("PricingPlan", () => {
     vi.clearAllMocks();
 
     // Mock useSampleMutation
-    (useSampleMutation as jest.Mock).mockReturnValue({
+    (useSampleMutation as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       mutate: mockMutate,
       loading: false,
     });
@@ -98,7 +98,7 @@ describe("PricingPlan", () => {
 
   it("disables the button while loading", () => {
     // Mock loading state
-    (useSampleMutation as jest.Mock).mockReturnValue({
+    (useSampleMutation as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       mutate: mockMutate,
       loading: true,
     });

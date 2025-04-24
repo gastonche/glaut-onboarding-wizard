@@ -1,5 +1,5 @@
 import React from "react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Pricing } from "../";
 import { useOnboardingStore } from "../../../core/lib/onboarding-store";
@@ -25,12 +25,12 @@ describe("Pricing", () => {
     vi.clearAllMocks();
 
     // Mock useOnboardingStore
-    (useOnboardingStore as jest.Mock).mockReturnValue({
+    (useOnboardingStore as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       setSelectedPlan: mockSetSelectedPlan,
     });
 
     // Mock useSampleMutation
-    (useSampleMutation as jest.Mock).mockReturnValue({
+    (useSampleMutation as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       mutate: vi.fn().mockResolvedValue(undefined), // Ensure mutate resolves successfully
       loading: false,
     });

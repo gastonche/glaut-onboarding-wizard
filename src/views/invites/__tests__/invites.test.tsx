@@ -1,5 +1,5 @@
-// invites.test.tsx
-import { describe, it, expect, vi } from "vitest";
+import React from "react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Invites } from "../";
 import { useOnboardingStore } from "../../../core/lib/onboarding-store";
@@ -26,13 +26,13 @@ describe("Invites", () => {
     vi.clearAllMocks();
 
     // Mock useOnboardingStore
-    (useOnboardingStore as jest.Mock).mockReturnValue({
+    (useOnboardingStore as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       invites: ["test1@example.com", "test2@example.com"],
       setInvites: mockSetInvites,
     });
 
     // Mock useSampleMutation
-    (useSampleMutation as jest.Mock).mockReturnValue({
+    (useSampleMutation as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       mutate: mockMutate,
       loading: false,
     });
@@ -88,7 +88,7 @@ describe("Invites", () => {
 
   it("disables the Finish button when there are no invites", () => {
     // Mock an empty invites array
-    (useOnboardingStore as jest.Mock).mockReturnValue({
+    (useOnboardingStore as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       invites: [],
       setInvites: mockSetInvites,
     });

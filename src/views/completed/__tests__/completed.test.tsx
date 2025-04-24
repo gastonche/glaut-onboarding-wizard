@@ -1,7 +1,8 @@
-// onboarding-completed.test.tsx
+import React from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { OnboardingCompleted } from "..";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { clearSession, useOnboardingStore } from "../../../core/lib/onboarding-store";
 
 // Mock dependencies
@@ -18,7 +19,7 @@ describe("OnboardingCompleted", () => {
     vi.clearAllMocks();
 
     // Mock useOnboardingStore
-    (useOnboardingStore as jest.Mock).mockReturnValue({
+    (useOnboardingStore as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       plan: "Basic",
       billing: {
         cardHolderName: "John Doe",
@@ -31,7 +32,7 @@ describe("OnboardingCompleted", () => {
     });
 
     // Mock clearSession
-    (clearSession as jest.Mock) = mockClearSession;
+    (clearSession as unknown as ReturnType<typeof vi.fn>) = mockClearSession;
   });
 
   it("renders the welcome message and button", () => {

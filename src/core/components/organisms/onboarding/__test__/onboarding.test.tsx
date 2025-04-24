@@ -1,8 +1,11 @@
+import React, { PropsWithChildren } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { Onboarding } from "../";
+import { BillingProps } from "../../../../../views/billing";
 
-let mockedUseOnboardingReturn: any = {};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let mockedUseOnboardingReturn: any;
 
 vi.mock("../../../../hooks/use-onboarding", () => ({
   useOnboarding: () => mockedUseOnboardingReturn,
@@ -15,7 +18,7 @@ vi.mock("../../../../../views/completed", () => ({
 }));
 
 vi.mock("../onboarding-layout", () => ({
-  OnboardingLayout: ({ children }: any) => (
+  OnboardingLayout: ({ children }: PropsWithChildren) => (
     <div data-testid="layout">{children}</div>
   ),
 }));
@@ -25,7 +28,7 @@ const mockPrev = vi.fn();
 const mockSteps = [{ name: "Step 1" }, { name: "Step 2" }];
 
 // 📦 Fake component to stand in for current step
-const MockStepComponent = ({ ticker, onNext, onPrev }: any) => (
+const MockStepComponent = ({ ticker, onNext, onPrev }: BillingProps) => (
   <div data-testid="step">
     {ticker}
     <button onClick={onNext}>Next</button>
